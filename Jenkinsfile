@@ -15,7 +15,7 @@ pipeline {
     stage('Build Image') {
       steps {
       sh "docker build -t salota/request-logger:${env.BUILD_ID} ."
-      sh "docker tag salota/request-logger:${env.BUILD_ID} brainupgrade/request-logger:latest"
+      sh "docker tag salota/request-logger:${env.BUILD_ID} salota/request-logger:latest"
       }
     }
     
