@@ -14,8 +14,8 @@ pipeline {
     
     stage('Build Image') {
       steps {
-      sh "docker build -t salotaaa/request-logger:${env.BUILD_ID} ."
-      sh "docker tag salotaaa/request-logger:${env.BUILD_ID} brainupgrade/request-logger:latest"
+      sh "docker build -t salota/request-logger:${env.BUILD_ID} ."
+      sh "docker tag salota/request-logger:${env.BUILD_ID} brainupgrade/request-logger:latest"
       }
     }
     
@@ -28,8 +28,8 @@ pipeline {
     success {
       withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
         sh "docker login -u ${USERNAME} -p ${PASSWORD}"
-        sh "docker push salotaaa/request-logger:${env.BUILD_ID}"
-        sh "docker push salotaaa/request-logger:latest"
+        sh "docker push salota/request-logger:${env.BUILD_ID}"
+        sh "docker push salota/request-logger:latest"
       }
     }
   }
